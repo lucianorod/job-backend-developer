@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: authentication
+  profiles:
+    active: ${SPRING_PROFILE:local}
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+  jpa:
+    hibernate:
+      ddl-auto: validate
+logging:
+  level:
+    ROOT: info
+server:
+  servlet:
+    context-path: /authentication
+security:
+  oauth2:
+    client:
+      scope: password

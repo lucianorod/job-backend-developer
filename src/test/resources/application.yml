@@ -1,0 +1,9 @@
+spring:
+  security:
+    user:
+      name: test
+      password: test
+
+logging:
+  level:
+    ROOT: info

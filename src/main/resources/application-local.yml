@@ -1,0 +1,14 @@
+spring:
+  h2:
+    console:
+      enabled: true
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:h2:mem:authenticationdb;DB_CLOSE_DELAY=-1;MODE=MySQL;INIT=create schema if not exists "public"\;
+    username: local
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create
+server:
+  port: 8060
