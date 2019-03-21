@@ -40,7 +40,7 @@ public class UserService {
     public User save(final UserDto userDto) {
         logger.info("M=save, saving User {}", userDto.toString());
         final User user = User.builder().username(userDto.getUsername()).password(bCryptPasswordEncoder.
-                encode(userDto.getPassword())).build();
+                encode(userDto.getPassword())).cpf(userDto.getCpf()).build();
 
         Set<Role> roles = userDto.getRoles().stream().map(r -> roleRepository.getByName(r.getName()))
                 .collect(Collectors.toSet());

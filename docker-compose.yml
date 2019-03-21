@@ -16,18 +16,18 @@ services:
     volumes:
       - /data/redis:/data
     ports:
-      - "6379:6379"
-  # authentication:
-  #   image: authentication
-  #   environment:
-  #     - SPRING_PROFILE=local
-  #   depends_on:
-  #     - redis
-  #     - mysql
-  #   command: java -jar app.jar -Xms256m -Xmx256m
-  #   ports:
-  #     - "8080:8080"
-  #   deploy:
-  #     resources:
-  #         limits:
-  #           memory: 1024M
+      - "6376:6376"
+  authentication:
+    image: authentication
+    environment:
+      - SPRING_PROFILE=local
+    depends_on:
+      - db
+      - redis
+    command: java -jar app.jar -Xms256m -Xmx256m
+    ports:
+      - "8080:8080"
+    deploy:
+      resources:
+          limits:
+            memory: 1024M

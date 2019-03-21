@@ -15,14 +15,14 @@ public class UserController {
 
     private final UserService userService;
 
-    @Secured("ROLE_USER")
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public User post(@RequestBody UserDto userDto) {
         return userService.save(userDto);
     }
 
-    @Secured("ROLE_USER")
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @GetMapping("/{userId}")
     @ResponseStatus(HttpStatus.OK)
     public User get(@PathVariable(name = "userId") Long userId) {

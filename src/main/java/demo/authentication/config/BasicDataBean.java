@@ -29,7 +29,7 @@ public class BasicDataBean {
         roleRepository.findByName("ROLE_USER").
                 orElse(roleRepository.save(Role.builder().name("ROLE_USER").description("USER").build()));
 
-        Set<RoleDto> roles = new HashSet<>(Collections.singleton(new RoleDto("USER")));
-        userService.save(new UserDto("luciano", "test", "24208526050", roles));
+        Set<RoleDto> roles = new HashSet<>(Collections.singleton(new RoleDto("ROLE_ADMIN")));
+        userService.save(new UserDto("admin", "admin", "24208526050", roles));
     }
 }
