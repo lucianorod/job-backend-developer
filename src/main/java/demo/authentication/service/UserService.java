@@ -33,7 +33,7 @@ public class UserService {
         final User user = User.builder().username(userDto.getUsername()).password(bCryptPasswordEncoder.
                 encode(userDto.getPassword())).build();
         Set<Role> roles = new HashSet<>();
-        roles.add(roleRepository.findByName("USER_ROLE"));
+        roles.add(roleRepository.findByName("USER_ROLE").get());
         user.setRoles(roles);
 
         return userRepository.save(user);

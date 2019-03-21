@@ -1,14 +1,18 @@
 spring:
-  h2:
-    console:
-      enabled: true
-  datasource:
-    type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:h2:mem:authenticationdb;DB_CLOSE_DELAY=-1;MODE=MySQL;INIT=create schema if not exists "public"\;
-    username: local
-    password:
+  redis:
+    host: localhost
+    port: 6376
+    database: 0
   jpa:
     hibernate:
       ddl-auto: create
+    show-sql: false
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    hikari:
+      jdbc-url: jdbc:mysql://localhost:3306/authentication
+      username: root
+      password: root
 server:
   port: 8060

@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+
 @AllArgsConstructor
 @RestController
 @RequestMapping("/users")
@@ -30,5 +32,10 @@ public class UserController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable(name = "userId") Long userId) {
         userService.delete(userId);
+    }
+
+    @GetMapping("/me")
+    public Principal user(Principal principal) {
+        return principal;
     }
 }

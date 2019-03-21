@@ -1,4 +1,7 @@
 spring:
+  flyway:
+    enabled: true
+    locations: filesystem:src/main/resources/db.migration
   application:
     name: authentication
   profiles:

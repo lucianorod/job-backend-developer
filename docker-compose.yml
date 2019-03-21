@@ -1,0 +1,33 @@
+version: '3.3'
+volumes:
+  data:
+services:
+  db:
+    image: mysql:5.6
+    ports:
+      - "3306:3306"
+    volumes:
+      - data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=authentication
+  redis:
+    image: redis
+    volumes:
+      - /data/redis:/data
+    ports:
+      - "6379:6379"
+  # authentication:
+  #   image: authentication
+  #   environment:
+  #     - SPRING_PROFILE=local
+  #   depends_on:
+  #     - redis
+  #     - mysql
+  #   command: java -jar app.jar -Xms256m -Xmx256m
+  #   ports:
+  #     - "8080:8080"
+  #   deploy:
+  #     resources:
+  #         limits:
+  #           memory: 1024M

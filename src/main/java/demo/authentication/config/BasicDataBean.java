@@ -19,7 +19,8 @@ public class BasicDataBean {
 
     @PostConstruct
     private void initialize() {
-        roleRepository.save(Role.builder().name("USER_ROLE").description("USER").build());
+        roleRepository.findByName("USER_ROLE").
+                orElse(roleRepository.save(Role.builder().name("USER_ROLE").description("USER").build()));
         userService.save(new UserDto("test", "test"));
     }
 }
