@@ -28,6 +28,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         final Collection<GrantedAuthority> authorities = user.getRoles().stream()
                 .map(r -> new SimpleGrantedAuthority(r.getName())).collect(Collectors.toSet());
 
-        return new UserDetailsDto(user.getUsername(), user.getPassword(), authorities);
+        return UserDetailsDto.builder().username(user.getUsername()).password(user.getPassword())
+                .authorities(authorities).accountNonExpired(true).accountNonLocked(true).credentialsNonExpired(true)
+                .enabled(true).cpf(user.getCpf()).build();
     }
 }

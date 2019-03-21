@@ -16,7 +16,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 @AllArgsConstructor
 @EnableResourceServer
 @EnableAuthorizationServer
-@Profile(value = {"local", "test"})
+@Profile("local")
 public class OAuthConfig extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsServiceImpl userDetailsService;

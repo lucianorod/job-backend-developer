@@ -1,20 +1,21 @@
 package demo.authentication.dto;
 
-import com.sun.istack.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
+import java.util.Set;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class UserDto {
 
-    @NotNull
     private String username;
 
-    @NotNull
     private String password;
+
+    private String cpf;
+
+    private Set<RoleDto> roles;
 }

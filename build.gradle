@@ -31,8 +31,7 @@ dependencies {
     implementation 'org.apache.commons:commons-pool2:2.6.1'
     implementation 'redis.clients:jedis:2.9.0'
 
-
-
+    
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'com.h2database:h2'
     runtimeOnly 'mysql:mysql-connector-java'

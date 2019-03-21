@@ -25,6 +25,9 @@ public class User {
     @Column(name = "username", unique = true)
     private String username;
 
+    @Column(name = "cpf", unique = true)
+    private String cpf;
+
     @NotEmpty
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(name = "password")
@@ -36,4 +39,5 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id", nullable = false, updatable = false))
     @JsonManagedReference
     private Set<Role> roles;
+
 }
