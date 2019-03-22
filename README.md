@@ -1,8 +1,6 @@
 # OAuth2
 
-Este sistema de login é baseado no protocolo OAuth2.
-
-A escolha por este protocolo foi motivada por entender que a arquitetura proposta é baseada em microserviços, acredito que seja fundamental ter um sistema de login desacoplado. Onde todas as chamadas, independente de microsserviço, podem ser validadas anterioremente neste serviço.
+Este sistema de login é baseado no protocolo OAuth2. A escolha deste protocolo foi motivada por entender que a arquitetura proposta é baseada em microsserviços. Acredito que seja fundamental ter um sistema de login desacoplado, onde todas as chamadas, independente de microsserviço, podem ser validadas anterioremente neste serviço.
 
 
 # Acesso
@@ -50,7 +48,7 @@ curl -X POST \
 
 # Recuperar os dados  de usuário
 
-É possível recuperar os dados de um usuários de duas formas
+É possível recuperar os dados de um usuários de duas formas:
 
 * Através de sua autenticação:
 
@@ -77,16 +75,16 @@ Considerando isso, poderíamos ter um balanceador de carga distribuindo as chama
 
 Imagino que os serviços estejam rodando em containers orquestrados através do kubernetes, o que permitiria que este serviço fosse escalado de acordo com a demanda de requisições.
 
-É importante ressaltar que após o primeiro login os dados do usuário já estariam em cache (Redis), o que permitiria uma resposta ainda mais rápida e diminuiria a carga sobre o banco de dados. 
+É importante ressaltar que após o primeiro login, os dados do usuário já estariam em cache (Redis), o que permitiria uma resposta ainda mais rápida e diminuiria a carga sobre o banco de dados. 
 
 * Com base no problema anterior, gostaríamos que você codificasse um novo sistema de login para muitos usuários simultâneos e carregamento da tela inicial. Lembre-se que é um sistema web então teremos conteúdo estático e dinâmico. Leve em consideração também que na empresa existe um outro sistema que também requisitará os dados dos usuários, portanto, este sistema deve expor as informações para este outro sistema de alguma maneira.
 
 R: Listo abaixo algumas medidas que podem ser tomadas pra evitar que o carregamento da tela inicial fique lento:
 
-1) O username do usuário é único e está indexado no banco de dados.
-2) Após o primeiro login, os dados básicos do usuários já estão em cache.
-3) Auto scalling sob demanda no kubenetes.
-4) Load balancer
+1) O username do usuário é único e está indexado no banco de dados;
+2) Após o primeiro login, os dados básicos do usuários já estão em cache;
+3) Auto scalling sob demanda no kubenetes;
+4) Load balancer.
 
 # Deploy
 
