@@ -1,8 +1,6 @@
 spring:
   redis:
-    host: localhost
-    port: 6376
-    database: 0
+    host: redis
   jpa:
     hibernate:
       ddl-auto: create

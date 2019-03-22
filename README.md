@@ -48,6 +48,26 @@ curl -X POST \
 }'
 ```
 
+# Recuperar os dados  de usuário
+
+É possível recuperar os dados de um usuários de duas formas
+
+* Através de sua autenticação:
+
+```
+curl -X GET \
+  http://localhost:8080/authentication/users/me \
+  -H 'Authorization: Bearer {{token}}'
+```
+
+* Através do seu ID:
+
+```
+curl -X GET \
+  http://localhost:8080/authentication/users/3 \
+  -H 'Authorization: Bearer {{token}}'
+```
+
 # Desafio
 
 * Imagine que hoje tenhamos um sistema de login e perfis de usuários. O sistema conta com mais de 10 milhões de usuários, sendo que temos um acesso concorrente de cerca de 5 mil usuários. Hoje a tela inicial do sistema se encontra muito lenta. Nessa tela é feita uma consulta no banco de dados para pegar as informações do usuário e exibi-las de forma personalizada. Quando há um pico de logins simultâneos, o carregamento desta tela fica demasiadamente lento. Na sua visão, como poderíamos iniciar a busca pelo problema, e que tipo de melhoria poderia ser feita?
@@ -66,4 +86,11 @@ R: Listo abaixo algumas medidas que podem ser tomadas pra evitar que o carregame
 1) O username do usuário é único e está indexado no banco de dados.
 2) Após o primeiro login, os dados básicos do usuários já estão em cache.
 3) Auto scalling sob demanda no kubenetes.
-4) Cache HTTP para a página de login se houve necessidade.
+4) Load balancer
+
+# Deploy
+
+```
+./gradlew clean build
+docker build -t authentication .
+docker-compose up
